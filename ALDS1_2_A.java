@@ -1,6 +1,6 @@
 import java.util.Scanner;
 
-// Insertion Sort
+// Bubble Sort
 class Main {
     public static void main(String[] args) {
 
@@ -12,19 +12,20 @@ class Main {
             A[i] = sc.nextInt();
         }
 
-        out(A);
-
-        for (int i = 1; i < A.length; i++) {
-            int j = i - 1;
-            int v = A[i];
-            while (j != -1 && v < A[j]) {
-                A[j + 1] = A[j];
-                j--;
+        int cnt = 0;
+        for (int i = 0; i < A.length; i++) {
+            for (int j = A.length - 1; j > i; j--) {
+                int former = A[j - 1];
+                int later = A[j];
+                if (later < former) {
+                    A[j - 1] = later;
+                    A[j] = former;
+                    cnt++;
+                }
             }
-            A[j + 1] = v;
-
-            out(A);
         }
+        out(A);
+        System.out.println(cnt);
     }
 
     private static void out(int[] A) {
@@ -34,4 +35,5 @@ class Main {
         }
         System.out.printf("\n");
     }
+
 }
